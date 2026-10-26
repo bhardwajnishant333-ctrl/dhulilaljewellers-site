@@ -1,0 +1,18 @@
+name: Publish the website
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+permissions:
+  pages: write
+  id-token: write
+jobs:
+  enable:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Turn on GitHub Pages from the main branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api -X POST repos/${{ github.repository }}/pages -f "source[branch]=main" -f "source[path]=/" || \
+          gh api -X PUT repos/${{ github.repository }}/pages -f "source[branch]=main" -f "source[path]=/" -f cname=dhulilaljewellers.com
