@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://dhulilaljewellers.com/sitemap.xml
